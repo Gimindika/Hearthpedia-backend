@@ -17,10 +17,17 @@ module.exports = {
         for (let fil in filters) {
           if (fil != "page") {
             if (cards[i].hasOwnProperty([fil])) {
+              if (fil == "attack" || fil == "cost") {
+                if (filters[fil] != 0 && cards[i][fil] == 0) {
+                  match = false;
+                }
+              }
+
               if (cards[i][fil]) {
                 if (cards[i][fil] != filters[fil]) {
                   match = false;
                 }
+
                 if (filters["name"]) {
                   if (
                     cards[i]["name"]
